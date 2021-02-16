@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fnValidateEmail(email)
+        {
+            console.log(email.validity);
+            if(email.validity.valueMissing)
+                email.setCustomValidity('Email is mandatory. cant ignore');
+            if(email.validity.typeMismatch)
+                email.setCustomValidity('Email address is not valid. Enter correctly');
+        }
+    </script>
+</head>
+<body>
+    <div>
+        div 1
+    </div>
+    <div>
+        div 2
+    </div>
+    <p>This is a paragraph. This <span style="font-weight: bold;"> paragraph </span>contains a span. Span is inline</p>
+    <p>This is a paragraph. This <div style="font-weight: bold;"> paragraph </div>contains a div. 
+        div is block</p>
+
+    <form action="">
+        <input type="email" required name="" id="" oninvalid="fnValidateEmail(this)">
+        <input type="submit">
+    </form>
+</body>
+</html>

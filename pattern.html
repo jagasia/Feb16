@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn1(x) {
+            console.log(x.validity);
+            console.log(x.validity.valueMissing);
+
+            if (x.validity.valueMissing)
+                x.setCustomValidity('Value cannot be blank');
+            if (x.validity.typeMismatch)
+                x.setCustomValidity('Type has some rules. Cannot break');
+            if (x.validity.patternMismatch)
+                x.setCustomValidity('Pattern is not followed');
+            if (x.validity.tooLong)
+                x.setCustomValidity("Too long");
+            if (x.validity.tooShort)
+                x.setCustomValidity('Too short');
+        
+        }
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <!-- <input type="text" name="" id="" pattern="[A-Z]{3}[0-9]{3}" oninvalid="fn1(this)"> -->
+        <!-- <input type="email" name="" id="" required oninvalid="fn1(this)"><br> -->
+        <input type="text" name="" id="txt" required minlength="2" 
+        oninput="this.setCustomValidity('')" maxlength="3" oninvalid="fn1(this)" value="abcdefgh">
+        <input type="submit"  >
+    </form>
+</body>
+
+</html>

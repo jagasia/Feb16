@@ -1,0 +1,665 @@
+HTML5
+	Semantics
+		
+	Validations
+	Custom Validations
+
+Semantics:
+	before HTML5 was introduced,
+		<div class="header">
+	in HTML5
+		<header>		actually a div
+		</header>
+
+what is div?
+	how does it differ from span
+
+	<div>
+	<span>
+
+
+
+These 2 are containers. they can contain other HTML elements as child
+	Like a <form>
+
+How does <div> differs from a <p>
+
+	div
+		display:block
+
+	span
+		display:inline
+
+	a page may contain several <div> elements
+
+	1) Header			<div class="header">
+	2) Footer			<div class="footer">
+	3) Navigation bar
+	4) Body
+	
+	how this "class" help us?
+	in stylesheets, (css/ xslt)
+		we can refer to an element using its ID or class or even element name etc
+	HTML5 semantics
+
+
+	<div class="header">
+
+	In stylesheet,
+		i will refer this div using
+		.header
+		{}
+
+	<div id="nav">
+		#nav
+		{}
+---------the above methods are old way. IN html 5------------
+
+	header
+	{}
+	
+	nav
+	{}
+
+	<input type=date />
+	<input type=email />
+
+
+Validations
+--------------
+	typing errors. or check if the data entry is made correctly or not
+	notify the user when the data entry is not correct
+	
+	i) type
+	ii) range
+	iii) passwords do not match 
+	iv) pattern			(email)
+	v) future date for date of birth
+	vi) number format (phone)
+	vii) password strength
+
+
+
+	HTML5 already has some support for most of these validations
+	we need to display custom error messages (my own sentence to display error)
+
+
+Task:
+	create a html form that contains few input controls
+	and instead of displaying default error messages, 
+	display your custom validation message on invalid
+
+	
+
+1) PATTERN
+	HTML5 input field can contain an attribute called "pattern"
+	ex:
+		<input type="text" pattern="XYZ" />
+
+	how to form the pattern?
+		first thing is the symbol
+		second thing is the multiplicity
+
+		ex:
+			[A-Z]{3}
+			correct values are
+			ABC
+			XYZ
+			IJK
+			ZYX
+			AEI
+			RAM
+			
+		any THREE upper case characters are valid
+
+		ex:
+			[A-Za-z]{5}
+		upper or lower case characters (5 characters)
+		
+
+here,
+	[]	are used to specify
+		list of characters (or)	range of values
+
+		[AEIOU]	
+		means, any one character from the above list is allowed
+		[AEIOU]{3}
+		3 characters must be present only from the above list of values
+			AAA
+			AEI
+			EIA
+			IOU
+			UIA
+			
+
+[] is used for 
+		list of values from which one is allowed
+		or
+		range of values like [A-Z]
+
+
+	what is type mistmatch and pattern mismatch
+
+	only when you use, pattern attribute, you will get this pattern mismatch
+		
+	type mismatch occurs when the rule imposed by the type is not adhered
+
+	<input type="email" pattern="" />
+
+Task:
+	valueMissing: false, typeMismatch: false, patternMismatch: false, tooLong: true, tooShort: false, …
+
+	Display custom error message for the above cases
+
+
+===========================================
+CSS3
+	Cascading Style Sheets
+
+	What is the need for a stylesheet?
+		style attribute of html elements
+
+	we need stylesheets for
+		layout
+		coloring
+		aligning
+		
+
+	i) manage the style of multiple html elements easily
+	ii) we can separate the role of css programmer from html programmer	(using external stylesheet)
+	iii) styles are applied for multiple html pages
+
+
+how many types of stylesheet?
+	i) inline
+	ii) internal		(embedded)
+	iii) external
+
+Inline Stylesheet:
+------------------
+	they are in line of the html tag itself
+	ex:
+		<p style="text-align: center;">This is also a paragraph</p>
+
+	ie., When we use 'style' attribute of html element, we are using inline stylesheet
+	
+	Note:
+		Inline style will win
+
+Internal Stylesheet:
+--------------------
+	<style>
+	</style>
+
+	This applies to the current html page
+
+External Stylesheet:
+--------------------
+	a separate file is created with .css extension
+BREAK:	We meet at 11:16 am
+
+
+Selectors:
+----------
+Task:
+	1) how will you refer to an element in style?	(means, by element name)
+	2) how will you refer to element(s) based on their class name?	
+	3) how will you refer to an element based on its ID?
+
+
+1) element name
+	ex:
+		p
+		{
+			text-align:center;
+			color:blue;
+			background-color:yellow;
+		}
+
+		table
+		{
+		}
+	
+		div{}
+	
+		a
+		{}
+
+		h1,h3,h5
+		{
+			color:red;
+		}	
+
+		h2,h4,h6
+		{
+			color:green;
+		}
+
+these are based on Element selector
+
+p
+{
+    text-align:center;
+    color:blue;
+    background-color:yellow;
+}
+
+
+h1,h3,h5
+{
+    color:red;
+    text-align: center;
+}	
+
+h2,h4,h6
+{
+    color:green;
+}
+
+input[type="text"]
+{
+    background-color: yellow;
+}
+
+input[type="number"]
+{
+    background-color: violet;
+}
+
+input[type="email"]
+{
+    background-color: blueviolet;
+}
+=====================================================================================
+ID selector:
+------------
+we can use ID of an element to style that particular element. ID is unique to an element in the page
+so it will only to one element in the page
+
+
+Class Selector:
+---------------
+what is the symbol for class selector?
+	.
+
+
+TasK:
+	create a table and apply the below style for odd rows
+		background color should be silver
+		font color should be green
+
+	even rows 
+		background color should be yellow
+		font color should be blue
+	Note:
+		use class selector to achieve this
+
+
+color code in CSS:
+	#RedGreenBlue
+	Each color range:	00 to FF		(HEXA Decimal)
+
+	
+
+Combinator selectors:
+---------------------
+h1, h3, h4
+{
+	
+}
+	
+
+div p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+the above style is applied to all paragraphs present directly inside div or inside any container inside div
+
+....................
+we want to apply style only to 'p' directly inside a div as a child
+div>p
+-------------------------------
+table + p{
+    color:red
+}
+
+The style applies to the paragraph adjacent and immediately below the table
+
+----------------------------
+Task:
+	identify "combinator" selectors and share with example code (test it and paste in chat)
+
+
+Descedant (ex:	div p{})	use space
+	applies to any paragraph found under div (immediately or inside anywhere)
+
+Child	(ex:	div>p{})	use >
+	applies only to direct child
+
+table ~ p
+{}	
+applies to immediate or any sibling to table
+====================
+CSS pseudo selectors:
+---------------------
+Task:
+	identify pseudo selectors related to anchor <a>
+
+
+------------------------
+Task:
+	Create 5 text boxes.
+	When cursor comes into the textbox, the background color should become light yellow 	(focus)
+	When cursor moves out of the textbox, the background color should become white	(no need to do anything)
+
+<style>
+        input[type="text"]:focus
+        {
+            background-color: lightyellow;
+        }
+    </style>
+
+    <input type="text" name="" id=""><br>
+    <input type="text" name="" id=""><br>
+    <input type="text" name="" id=""><br>
+    <input type="text" name="" id=""><br>
+    <input type="text" name="" id=""><br>
+
+
+p i:first-child {
+  color: blue;
+} 
+<p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
+<p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
+
+	apply blue color to the italic element (first) found inside the paragraph
+
+
+===================================
+Fonts
+Colors
+Shadow
+Rounded corners
+Gradients		(multi colors)		from one color to another color fadding
+Box Model
+
+Identify some of the css properties related to font:
+	font-family
+		Arial, Times New Roman, Courier New
+	font-weight
+		bold
+	font-style
+		italic
+	font-size
+		11pt
+	
+        p
+        {
+            font-family: Arial;
+            font-size: 16pt;
+            font-weight: bold;
+            font-style: italic;
+            font-variant: small-caps;
+            font-stretch: extra-condensed;
+        }
+
+Colors
+	yellow
+	#FFFF00
+	rgb(0,0,0)		to 	rgb(255, 255, 255)
+	rgba		a for alpha	(means? 	transparancy)
+		for alpha		0-1		0 being full transparent
+
+
+Lets have a background image for the entire body
+and lets have a form placed over the body
+
+
+
+Shadows:
+--------
+Task:
+	Create webpage with a background image
+	add a box / form on the page
+	give transparency 50% so that the background image is slightly visible
+	Give a heading with shadow effects (glow)
+
+
+Task:
+	Convert the DIV into a box positioned using margin
+	give a border width and color
+	specify the padding width for the content inside the border
+	Hint:	use CSS Box model
+
+
+Task:
+	Use grandient to gradually change from one color to another color
+
+
+
+from one position to another position
+div {
+  transform: scale(2, 3);
+}
+Task:
+	use transform css property to rotate a div element to a specified angle
+
+div {
+  transform: rotate(-20deg);
+}
+
+div {
+  transform: scaleX(2);
+}
+
+div {
+  transform: scaleY(3);
+}
+
+
+matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())
+
+
+Function	Description
+matrix(n,n,n,n,n,n)	Defines a 2D transformation, using a matrix of six values
+translate(x,y)	Defines a 2D translation, moving the element along the X- and the Y-axis
+translateX(n)	Defines a 2D translation, moving the element along the X-axis
+translateY(n)	Defines a 2D translation, moving the element along the Y-axis
+scale(x,y)	Defines a 2D scale transformation, changing the elements width and height
+scaleX(n)	Defines a 2D scale transformation, changing the element's width
+scaleY(n)	Defines a 2D scale transformation, changing the element's height
+rotate(angle)	Defines a 2D rotation, the angle is specified in the parameter
+skew(x-angle,y-angle)	Defines a 2D skew transformation along the X- and the Y-axis
+skewX(angle)	Defines a 2D skew transformation along the X-axis
+skewY(angle)	Defines a 2D skew transformation along the Y-axis
+--------------------------------------------------------------
+
+Task:
+	Identify the methods of CSS 3D transformations 
+
+---------------------
+CSS Transistions
+	SPECIFY the time for transition in seconds
+
+	  transition: width 10s, height 4s;
+
+
+
+
+
+
+Break 4:00 to 4:15 PM
+
+Identify the methods of transition in CSS
+
+
+  transition: width 10s, height 4s;
+is same as
+
+  transition-property: width;
+  transition-duration: 2s;
+
+
+----------------------------
+
+CSS Animations
+--------------
+
+@	symbol is used to define 'rules' in css
+@	in typescript is decorator or directive
+@	in java is annotation
+
+
+    <style>
+        @keyframes example{
+            from {width:100px; height: 100px;background-color: yellow;}
+            to {width: 600px; height: 600px; background-color: red;}
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            animation-name: example;
+            animation-duration: 5s;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+
+Task:
+
+	Use @Keyframes rule to create animation
+
+
+ @keyframes example{
+            0% {width:100px; height: 100px;background-color: yellow;}
+            25% {width: 600px; height: 600px; background-color: red;}
+            50% {width: 800px; height: 800px; background-color: maroon;}
+            100% {width: 100px; height: 100px; background-color: yellow;}
+            
+        }
+      
+
+------------------------------
+<style> 
+div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+</style>
+
+-----------------
+Task:
+create a div that contains a form
+	the form should move from top to bottom
+
+
+-------------------------
+Task:
+Create a html page that contains
+multiple div in same line
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+        div
+        {
+            display: flex;
+            width: 300px;
+        }
+        ul
+        {
+            display: flex;
+            list-style:none;
+        }
+        nav li,a
+        {
+            background-color: #000000;
+            color: #FFFFFF;
+            width: 90px;
+            height: 30px;
+            text-align: center;
+            padding-top: 6pt;
+        }
+
+        nav li:hover, a:hover
+        {
+            background-color: teal;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="button" value="Submit" class="btn-success">
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Contact Us</li>
+            <li><a href="#">DropDown</a>
+                <ul>
+                  <li><a href="#">Link 1</a></li>
+                  <li><a href="#">Link 2</a></li>
+                  <li><a href="#">Link 3</a></li>
+                </ul>
+              </li>
+            <li>Sign Up</li>
+        </ul>
+    </nav>
+    <div class="row">
+        <ul>
+            <li class="last">
+                <div class="fl_left"><img src="/assets/images/demo/100x180.gif" alt="" /></div>
+                <div class="fl_right">
+                  <h2>Indonectetus facilis</h2>
+                  <p>Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque.</p>
+                  <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+                </div>
+              </li>
+              <li class="last">
+                <div class="fl_left"><img src="/assets/images/demo/100x180.gif" alt="" /></div>
+                <div class="fl_right">
+                  <h2>Indonectetus facilis</h2>
+                  <p>Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque.</p>
+                  <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+                </div>
+              </li>
+              <li class="last">
+                <div class="fl_left"><img src="/assets/images/demo/100x180.gif" alt="" /></div>
+                <div class="fl_right">
+                  <h2>Indonectetus facilis</h2>
+                  <p>Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque.</p>
+                  <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+                </div>
+              </li>
+        </ul>
+    </div>
+</body>
+</html>

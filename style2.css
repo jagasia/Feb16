@@ -1,0 +1,22 @@
+.odd
+{
+    text-align: right;
+}
+
+.even
+{
+    text-align: center;
+}
+
+table
+{
+    border: 1px solid #FF0000;
+    background-color: #EEE;
+}
+
+div p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+table + p{
+    color:red
+}
